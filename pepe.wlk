@@ -1,6 +1,9 @@
 object pepe{
     var categoria = cadete
     var neto = categoria.neto()
+    var resultados = bonoResultados.montoFijo()
+    var presentismo = 0
+    var sueldo = neto + resultados + presentismo
     method recibirCategoria(_categoria){
         categoria = _categoria
         neto = _categoria.neto()
@@ -8,18 +11,45 @@ object pepe{
     method categoria(){
         return categoria
     }
-    
-}
-
-object neto{
+    method neto(){
+        return neto
+    }
     
 }
 
 object bonoResultados{
-
+    const montoFijo = 800
+    const nulo = 0
+    method porcentaje(neto){
+        return neto * 0.1
+    }
+    method montoFijo(){
+        return montoFijo
+    }
+    method nulo(){
+        return nulo
+    }
 }
 
 object bonoPresentismo{
+    method presentismo(_presentismo){
+        return 
+    }
+}
+
+object presentismoNormal{
+    
+}
+
+object presentismoAjuste{
+
+}
+
+object presentismoDemagogico{
+
+}
+
+objecto presentismoNulo{
 
 }
 

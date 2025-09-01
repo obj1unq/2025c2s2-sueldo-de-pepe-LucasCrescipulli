@@ -2,8 +2,9 @@ import pepe.*
 
 describe "Sueldo Pepe" {
 	
-	test "Test 1" {
-		//TODO: Implementame
+	test "Pepe es cadete y tiene 20000 de sueldo neto" {
+		assert.equals(cadete, pepe.categoria())
+		assert.equals(20000, pepe.neto())
 	}
 
 	

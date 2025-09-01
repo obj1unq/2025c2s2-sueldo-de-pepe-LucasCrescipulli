@@ -49,7 +49,7 @@ object bonoResultados{
 
 object bonoResultadoPorcentaje{
     method bono(empleado){
-        empleado.categoria().neto()
+       return empleado.neto()
     }
 }
 

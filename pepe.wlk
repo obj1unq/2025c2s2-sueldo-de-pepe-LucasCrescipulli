@@ -1,10 +1,10 @@
 object pepe{
     var categoria = cadete
     var neto = categoria.neto()
-    var bonoResultados = bonoNulo
-    var bonoPresentismo = bonoNulo
+    var resultados = bonoNulo.monto(self)
+    var presentismo = bonoNulo.monto(self)
     var faltas = 0
-    var sueldo = neto + bonoResultados + bonoPresentismo
+    var sueldo = neto
 
     // getters
     method sueldo(){
@@ -25,14 +25,17 @@ object pepe{
         categoria = _categoria
         neto = _categoria.neto()
     }
-    method bonoPresentismo(bono){
-        bonoPresentismo = bono
+    method presentismo(bono){
+        presentismo = bono.monto(self)
     }
-    method bonoResultados(bono){
-        bonoResultados = bono
+    method resultados(bono){
+        resultados = bono.monto(self)
     }
     method faltas(_faltas){
         faltas = _faltas
+    }
+    method actualizarSueldo(){
+        sueldo = neto + presentismo + resultados
     }
 }
 
@@ -56,41 +59,41 @@ object cadete{
     }
 }
 
-object bonoResultadosFijo{
+object resultadosFijo{
     const montoFijo = 800
     method monto(empleado){
         return montoFijo
     }
 }
 
-object bonoResultadosPorcentaje{
+object resultadosPorcentaje{
     const porcentaje = 0.1
     method monto(empleado){
        return empleado.neto() * porcentaje
     }
 }
 
+// esto es horrible y lo tengo que corregir!!!!
 object presentismoNormal{
-    const sinFaltas = 2000
-    const unaFalta = 1000
     method monto(empleado){
-        if (empleado.faltas() > 1){
-            return 0
-        }
-        if (empleado.faltas() = 1){
-            return unaFalta
+        return if (empleado.faltas() > 1){
+            0
         }
         else {
-            return sinFaltas
+            2000
+        }
+            if (empleado.faltas() == 1) {
+                1000
+        } else{
+            2000
         }
     }
 }
 
 object presentismoAjuste{
-    const sinFaltas = 100
     method monto(empleado){
-        if (empleado.faltas() = 0){
-            return sinFaltas
+        if (empleado.faltas() == 0){
+            return 100
         }
         else {
             return 0
@@ -109,7 +112,7 @@ object presentismoDemagogico{
     }
 }
 
-object presentismoNulo(){
+object bonoNulo{
     method monto(empleado){
         return 0
     }

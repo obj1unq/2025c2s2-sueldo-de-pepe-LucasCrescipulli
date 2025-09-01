@@ -7,5 +7,13 @@ describe "Sueldo Pepe" {
 		assert.equals(20000, pepe.neto())
 	}
 
+	test "Pepe es cadete, tiene bono resultado FIJO y bono presentismo NORMAL y faltó 3 días"{
+		pepe.categoria(cadete)
+		pepe.resultados(resultadosFijo)
+		pepe.presentismo(presentismoNormal)
+		pepe.faltas(3)
+		assert.equals(20800, pepe.sueldo())
+	}
+
 	
 }

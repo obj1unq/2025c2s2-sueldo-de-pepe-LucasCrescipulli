@@ -10,8 +10,9 @@ describe "Sueldo Pepe" {
 	test "Pepe es cadete, tiene bono resultado FIJO y bono presentismo NORMAL y faltó 3 días. Sueldo = $20800"{
 		pepe.categoria(cadete)
 		pepe.resultados(resultadosFijo)
-		pepe.presentismo(presentismoNormal)
 		pepe.faltas(3)
+		pepe.presentismo(presentismoNormal)
+		pepe.actualizarSueldo()
 		assert.equals(20800, pepe.sueldo())
 	}
 
@@ -19,22 +20,25 @@ describe "Sueldo Pepe" {
 		pepe.categoria(gerente)
 		pepe.resultados(resultadosPorcentaje)
 		pepe.presentismo(bonoNulo)
+		pepe.actualizarSueldo()
 		assert.equals(16500, pepe.sueldo())
 	}
 	
 	test "Pepe es cadete,  tiene bono resultados por PORCENTAJE, bono por presentismo NORMAL y sin faltas. Sueldo = $24000"{
 		pepe.categoria(cadete)
 		pepe.resultados(resultadosPorcentaje)
-		pepe.presentismo(presentismoNormal)
 		pepe.faltas(0)
+		pepe.presentismo(presentismoNormal)
+		pepe.actualizarSueldo()
 		assert.equals(24000, pepe.sueldo())
 	}
 
 	test "Pepe es cadete, tiene bono de resultados por porcentaje, bono por presentismo normal, falto 1 día. $23000 de sueldo."{
 		pepe.categoria(cadete)
 		pepe.resultados(resultadosPorcentaje)
-		pepe.presentismo(presentismoNormal)
 		pepe.faltas(1)
+		pepe.presentismo(presentismoNormal)
+		pepe.actualizarSueldo()
 		assert.equals(23000, pepe.sueldo())
 	}
 }

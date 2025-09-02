@@ -4,7 +4,7 @@ object pepe{
     var resultados = bonoNulo.monto(self)
     var presentismo = bonoNulo.monto(self)
     var faltas = 0
-    var sueldo = neto
+    var sueldo = neto + resultados + presentismo
 
     // getters
     method sueldo(){
@@ -73,31 +73,37 @@ object resultadosPorcentaje{
     }
 }
 
-// esto es horrible y lo tengo que corregir!!!!
+
 object presentismoNormal{
+    const normal = 2000
     method monto(empleado){
-    
+        return if (empleado.faltas() <= 1){
+            normal - normal * 0.5 * empleado.faltas()
+        }
+        else {
+            0
+        }
     }
 }
 
 object presentismoAjuste{
     method monto(empleado){
-        if (empleado.faltas() == 0){
-            return 100
+        return if (empleado.faltas() == 0){
+            100
         }
         else {
-            return 0
+            0
         }
     }
 }
 
 object presentismoDemagogico{
     method monto(empleado){
-        if (empleado.neto() < 18000){
-            return 
+        return if (empleado.neto() < 18000){
+            500
         } 
         else {
-            return 300
+            300
         }
     }
 }

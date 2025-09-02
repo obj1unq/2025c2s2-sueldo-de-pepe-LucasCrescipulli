@@ -76,17 +76,7 @@ object resultadosPorcentaje{
 // esto es horrible y lo tengo que corregir!!!!
 object presentismoNormal{
     method monto(empleado){
-        return if (empleado.faltas() > 1){
-            0
-        }
-        else {
-            2000
-        }
-            if (empleado.faltas() == 1) {
-                1000
-        } else{
-            2000
-        }
+    
     }
 }
 
